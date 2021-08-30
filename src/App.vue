@@ -7,7 +7,16 @@
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  mounted() {
+    console.log(123);
+    this.$api.DEMO_ANY().then((res) => {
+      console.log(res);
+    });
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

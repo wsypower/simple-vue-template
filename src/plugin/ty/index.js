@@ -1,12 +1,9 @@
 // Element
 import ElementUI from "element-ui";
-// 组件
-import "@/components";
-
+import "element-ui/lib/theme-chalk/index.css";
 // 功能插件
 import pluginApi from "@/plugin/api";
 import pluginError from "@/plugin/error";
-import pluginLog from "@/plugin/log";
 
 export default {
   async install(Vue) {
@@ -26,6 +23,5 @@ export default {
     // 插件
     Vue.use(pluginApi);
     Vue.use(pluginError);
-    Vue.use(pluginLog);
   },
 };

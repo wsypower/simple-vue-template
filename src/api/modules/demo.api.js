@@ -14,12 +14,12 @@ export default ({ request, requestForMock, mock, faker, tools }) => ({
       const data = tools.parse(config.data);
       console.log(data);
       // 模拟正确的返回 并使用 faker 生成假数据
-      return tools.responseSuccess({
-        id: faker.random.uuid(),
-        address: faker.address.state(),
-      });
+      // return tools.responseSuccess({
+      //   id: faker.random.uuid(),
+      //   address: faker.address.state(),
+      // });
       // 模拟失败的返回
-      // return tools.responseError({}, '错误信息')
+      return tools.responseError({}, "错误信息");
     });
     // 接口请求
     // 如果这个接口不需要模拟了，请使用 request 代替 requestForMock
@@ -28,7 +28,7 @@ export default ({ request, requestForMock, mock, faker, tools }) => ({
     //   method: "post",
     //   data,
     // });
-    return request({
+    return requestForMock({
       url: "/demo/any",
       method: "post",
       data,

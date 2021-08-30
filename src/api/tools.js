@@ -51,25 +51,17 @@ export function responseError(data = {}, msg = "请求失败", code = 401) {
  * @param {Error} error 错误对象
  */
 export function errorLog(error) {
-  // 添加到日志
-  store.dispatch("w-admin/log/push", {
-    message: "数据请求异常",
-    type: "danger",
-    meta: {
-      error,
-    },
-  });
-  // 打印到控制台
-  if (process.env.NODE_ENV === "development") {
-    util.log.danger(">>>>>> Error >>>>>>");
-    console.log(error);
-  }
   // 显示提示
   Message({
     message: error.message,
     type: "error",
     duration: 5 * 1000,
   });
+  // 打印到控制台
+  if (process.env.NODE_ENV === "development") {
+    util.log.danger(">>>>>> Error >>>>>>");
+    console.log(error);
+  }
 }
 
 /**

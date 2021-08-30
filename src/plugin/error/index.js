@@ -22,27 +22,5 @@ export default {
       Vue.config.warnHandler = writeLog("warning");
     }
     Vue.config.errorHandler = writeLog("danger");
-    window.onunhandledrejection = (error) => {
-      store.dispatch("w-admin/log/push", {
-        message: get(error, "reason.message", "Unknown error"),
-        type: "danger",
-        meta: {
-          error: get(error, "reason"),
-          trace: get(error, "reason.stack"),
-        },
-      });
-    };
-    window.onerror = (event, source, lineno, colno, error) => {
-      store.dispatch("w-admin/log/push", {
-        message: get(error, "message", "Unknown error"),
-        type: "danger",
-        meta: {
-          error,
-          trace: get(error, "stack"),
-          source: `${source}@${lineno}:${colno}`,
-          event: event,
-        },
-      });
-    };
   },
 };
