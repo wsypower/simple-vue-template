@@ -9,11 +9,7 @@
 </template>
 <script>
 export default {
-  mounted() {
-    this.$api.DEMO_ANY().then((res) => {
-      console.log(res);
-    });
-  },
+  mounted() {},
 };
 </script>
 <style lang="scss">

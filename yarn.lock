@@ -903,6 +903,11 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
+"@gar/promisify@^1.0.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
+  integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.nlark.com/@hapi/address/download/@hapi/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -977,6 +982,22 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@npmcli/fs@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@npmcli/fs/-/fs-1.0.0.tgz#589612cfad3a6ea0feafcb901d29c63fd52db09f"
+  integrity sha512-8ltnOpRR/oJbOp8vaGUnipOi3bqkcW+sLHFlyXIr08OGHmVJLB1Hn7QtGXbYcpVtH1gAYZTlmDXtE4YV0+AMMQ==
+  dependencies:
+    "@gar/promisify" "^1.0.1"
+    semver "^7.3.5"
+
+"@npmcli/move-file@^1.0.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@npmcli/move-file/-/move-file-1.1.2.tgz#1a82c3e372f7cae9253eb66d72543d6b8685c674"
+  integrity sha512-1SUf/Cg2GzGDyaf15aR9St9TWlb+XvbZXWpDx8YKs7MLzMH/BCeopv+y9vzrzgkfykCGuWOlSu3mZhj2+FQcrg==
+  dependencies:
+    mkdirp "^1.0.4"
+    rimraf "^3.0.2"
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.20"
@@ -1224,6 +1245,14 @@
     "@types/webpack-sources" "*"
     anymatch "^3.0.0"
     source-map "^0.6.0"
+
+"@types/webpackbar@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@types/webpackbar/-/webpackbar-4.0.2.tgz#35f89241d8f99830413f90baba38966627cb22c7"
+  integrity sha512-IiNpibZVti7UhLAjFX9NNtVTnzIOrNTb8pr8MuHwsFRKu6Ae9yqiJ9wbvgaFUebFoj9skWo/SnDt3ueVLk38bw==
+  dependencies:
+    "@types/node" "*"
+    "@types/webpack" "^4"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
@@ -1870,7 +1899,7 @@ ansi-escapes@^3.0.0:
   resolved "https://registry.nlark.com/ansi-escapes/download/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
   integrity sha1-h4C5j/nb9WOBUtHx/lwde0RCl2s=
 
-ansi-escapes@^4.2.1:
+ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
   version "4.3.2"
   resolved "https://registry.nlark.com/ansi-escapes/download/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
   integrity sha1-ayKR0dt9mLZSHV8e+kLQ86n+tl4=
@@ -2483,6 +2512,30 @@ cacache@^12.0.2, cacache@^12.0.3:
     unique-filename "^1.1.1"
     y18n "^4.0.0"
 
+cacache@^15.0.5:
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/cacache/-/cacache-15.3.0.tgz#dc85380fb2f556fe3dda4c719bfa0ec875a7f1eb"
+  integrity sha512-VVdYzXEn+cnbXpFgWs5hTT7OScegHVmLhJIR8Ufqk3iFD6A6j5iSX1KuBTfNEv4tdJWE2PzA6IVFtcLC7fN9wQ==
+  dependencies:
+    "@npmcli/fs" "^1.0.0"
+    "@npmcli/move-file" "^1.0.1"
+    chownr "^2.0.0"
+    fs-minipass "^2.0.0"
+    glob "^7.1.4"
+    infer-owner "^1.0.4"
+    lru-cache "^6.0.0"
+    minipass "^3.1.1"
+    minipass-collect "^1.0.2"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.2"
+    mkdirp "^1.0.3"
+    p-map "^4.0.0"
+    promise-inflight "^1.0.1"
+    rimraf "^3.0.2"
+    ssri "^8.0.1"
+    tar "^6.0.2"
+    unique-filename "^1.1.1"
+
 cache-base@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/cache-base/download/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
@@ -2667,6 +2720,11 @@ chownr@^1.1.1:
   resolved "https://registry.nlark.com/chownr/download/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha1-b8nXtC0ypYNZYzdmbn0ICE2izGs=
 
+chownr@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
+  integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
+
 chrome-trace-event@^1.0.2:
   version "1.0.3"
   resolved "https://registry.nlark.com/chrome-trace-event/download/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
@@ -2676,6 +2734,11 @@ ci-info@^1.5.0:
   version "1.6.0"
   resolved "https://registry.nlark.com/ci-info/download/ci-info-1.6.0.tgz#2ca20dbb9ceb32d4524a683303313f0304b1e497"
   integrity sha1-LKINu5zrMtRSSmgzAzE/AwSx5Jc=
+
+ci-info@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.2.0.tgz#2876cb948a498797b5236f0095bc057d0dca38b6"
+  integrity sha512-dVqRX7fLUm8J6FgHJ418XuIgDLZDkYcDFTeL6TA2gt5WlIZUQrrH6EZrNClwT/H0FateUsZkGIOPRrLbP+PR9A==
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -2912,13 +2975,16 @@ compressible@~2.0.16:
   dependencies:
     mime-db ">= 1.43.0 < 2"
 
-compression-webpack-plugin@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-8.0.1.tgz#13b34403029760e66007f0bac8cf892a2009a3f4"
-  integrity sha512-VWDXcOgEafQDMFXEnoia0VBXJ+RMw81pmqe/EBiOIBnMfY8pG26eqwIS/ytGpzy1rozydltL0zL6KDH9XNWBxQ==
+compression-webpack-plugin@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-6.1.1.tgz#ae8e4b2ffdb7396bb776e66918d751a20d8ccf0e"
+  integrity sha512-BEHft9M6lwOqVIQFMS/YJGmeCYXVOakC5KzQk05TFpMBlODByh1qNsZCWjUBxCQhUP9x0WfGidxTbGkjbWO/TQ==
   dependencies:
+    cacache "^15.0.5"
+    find-cache-dir "^3.3.1"
     schema-utils "^3.0.0"
-    serialize-javascript "^6.0.0"
+    serialize-javascript "^5.0.1"
+    webpack-sources "^1.4.3"
 
 compression@^1.7.4:
   version "1.7.4"
@@ -2952,6 +3018,11 @@ connect-history-api-fallback@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/connect-history-api-fallback/download/connect-history-api-fallback-1.6.0.tgz#8b32089359308d111115d81cad3fceab888f97bc"
   integrity sha1-izIIk1kwjRERFdgcrT/Oq4iPl7w=
+
+consola@^2.15.0:
+  version "2.15.3"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.3.tgz#2e11f98d6a4be71ff72e0bdf07bd23e12cb61550"
+  integrity sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==
 
 console-browserify@^1.1.0:
   version "1.2.0"
@@ -4253,7 +4324,7 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-figures@^3.0.0:
+figures@^3.0.0, figures@^3.2.0:
   version "3.2.0"
   resolved "https://registry.nlark.com/figures/download/figures-3.2.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffigures%2Fdownload%2Ffigures-3.2.0.tgz#625c18bd293c604dc4a8ddb2febf0c88341746af"
   integrity sha1-YlwYvSk8YE3EqN2y/r8MiDQXRq8=
@@ -4444,6 +4515,13 @@ fs-extra@^7.0.1:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
     universalify "^0.1.0"
+
+fs-minipass@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-2.1.0.tgz#7f5036fdbf12c63c169190cbe4199c852271f9fb"
+  integrity sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==
+  dependencies:
+    minipass "^3.0.0"
 
 fs-write-stream-atomic@^1.0.8:
   version "1.0.10"
@@ -5073,7 +5151,7 @@ indexes-of@^1.0.1:
   resolved "https://registry.nlark.com/indexes-of/download/indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607"
   integrity sha1-8w9xbI4r00bHtn0985FVZqfAVgc=
 
-infer-owner@^1.0.3:
+infer-owner@^1.0.3, infer-owner@^1.0.4:
   version "1.0.4"
   resolved "https://registry.nlark.com/infer-owner/download/infer-owner-1.0.4.tgz#c4cefcaa8e51051c2a40ba2ce8a3d27295af9467"
   integrity sha1-xM78qo5RBRwqQLos6KPScpWvlGc=
@@ -5951,6 +6029,13 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lru-cache@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
+  dependencies:
+    yallist "^4.0.0"
+
 make-dir@^2.0.0:
   version "2.1.0"
   resolved "https://registry.nlark.com/make-dir/download/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -6144,11 +6229,40 @@ minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.npm.taobao.org/minimist/download/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha1-Z9ZgFLZqaoqqDAg8X9WN9OTpdgI=
 
-minipass@^3.1.1:
+minipass-collect@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/minipass-collect/-/minipass-collect-1.0.2.tgz#22b813bf745dc6edba2576b940022ad6edc8c617"
+  integrity sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==
+  dependencies:
+    minipass "^3.0.0"
+
+minipass-flush@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/minipass-flush/-/minipass-flush-1.0.5.tgz#82e7135d7e89a50ffe64610a787953c4c4cbb373"
+  integrity sha512-JmQSYYpPUqX5Jyn1mXaRwOda1uQ8HP5KAT/oDSLCzt1BYRhQU0/hDtsB1ufZfEEzMZ9aAVmsBw8+FWsIXlClWw==
+  dependencies:
+    minipass "^3.0.0"
+
+minipass-pipeline@^1.2.2:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/minipass-pipeline/-/minipass-pipeline-1.2.4.tgz#68472f79711c084657c067c5c6ad93cddea8214c"
+  integrity sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==
+  dependencies:
+    minipass "^3.0.0"
+
+minipass@^3.0.0, minipass@^3.1.1:
   version "3.1.3"
   resolved "https://registry.npm.taobao.org/minipass/download/minipass-3.1.3.tgz#7d42ff1f39635482e15f9cdb53184deebd5815fd"
   integrity sha1-fUL/HzljVILhX5zbUxhN7r1YFf0=
   dependencies:
+    yallist "^4.0.0"
+
+minizlib@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.2.tgz#e90d3466ba209b932451508a11ce3d3632145931"
+  integrity sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==
+  dependencies:
+    minipass "^3.0.0"
     yallist "^4.0.0"
 
 mississippi@^3.0.0:
@@ -6181,6 +6295,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   integrity sha1-2Rzv1i0UNsoPQWIOJRKI1CAJne8=
   dependencies:
     minimist "^1.2.5"
+
+mkdirp@^1.0.3, mkdirp@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
+  integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -6664,6 +6783,13 @@ p-map@^3.0.0:
   version "3.0.0"
   resolved "https://registry.nlark.com/p-map/download/p-map-3.0.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fp-map%2Fdownload%2Fp-map-3.0.0.tgz#d704d9af8a2ba684e2600d9a215983d4141a979d"
   integrity sha1-1wTZr4orpoTiYA2aIVmD1BQal50=
+  dependencies:
+    aggregate-error "^3.0.0"
+
+p-map@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-4.0.0.tgz#bb2f95a5eda2ec168ec9274e06a747c3e2904d2b"
+  integrity sha512-/bjOqmgETBYB5BoEeGVea8dmvHb2m9GLy1E9W43yeyfP6QQCZGFNa+XRceJEuDB6zqr+gKpIAmlLebMpykw/MQ==
   dependencies:
     aggregate-error "^3.0.0"
 
@@ -7297,6 +7423,11 @@ pretty-error@^2.0.2:
     lodash "^4.17.20"
     renderkid "^2.0.4"
 
+pretty-time@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/pretty-time/-/pretty-time-1.1.0.tgz#ffb7429afabb8535c346a34e41873adf3d74dd0e"
+  integrity sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==
+
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/process-nextick-args/download/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
@@ -7749,7 +7880,7 @@ rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.3:
   dependencies:
     glob "^7.1.3"
 
-rimraf@^3.0.0:
+rimraf@^3.0.0, rimraf@^3.0.2:
   version "3.0.2"
   resolved "https://registry.npm.taobao.org/rimraf/download/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
   integrity sha1-8aVAK6YiCtUswSgrrBrjqkn9Bho=
@@ -7894,6 +8025,13 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   resolved "https://registry.nlark.com/semver/download/semver-6.3.0.tgz?cache=0&sync_timestamp=1618846864940&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsemver%2Fdownload%2Fsemver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha1-7gpkyK9ejO6mdoexM3YeG+y9HT0=
 
+semver@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
+  integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
+
 send@0.17.1:
   version "0.17.1"
   resolved "https://registry.nlark.com/send/download/send-0.17.1.tgz?cache=0&sync_timestamp=1618846901933&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsend%2Fdownload%2Fsend-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
@@ -7917,6 +8055,13 @@ serialize-javascript@^4.0.0:
   version "4.0.0"
   resolved "https://registry.nlark.com/serialize-javascript/download/serialize-javascript-4.0.0.tgz?cache=0&sync_timestamp=1624284111898&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fserialize-javascript%2Fdownload%2Fserialize-javascript-4.0.0.tgz#b525e1238489a5ecfc42afacc3fe99e666f4b1aa"
   integrity sha1-tSXhI4SJpez8Qq+sw/6Z5mb0sao=
+  dependencies:
+    randombytes "^2.1.0"
+
+serialize-javascript@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-5.0.1.tgz#7886ec848049a462467a97d3d918ebb2aaf934f4"
+  integrity sha512-SaaNal9imEO737H2c05Og0/8LUXG7EnsZyMa8MzkmuHoELfT6txuj0cMqRj6zfPKnmQ1yasR4PCJc8x+M4JSPA==
   dependencies:
     randombytes "^2.1.0"
 
@@ -8298,6 +8443,13 @@ static-extend@^0.1.1:
   resolved "https://registry.npm.taobao.org/statuses/download/statuses-1.5.0.tgz?cache=0&sync_timestamp=1609654090567&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstatuses%2Fdownload%2Fstatuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+std-env@^2.2.1:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/std-env/-/std-env-2.3.0.tgz#66d4a4a4d5224242ed8e43f5d65cfa9095216eee"
+  integrity sha512-4qT5B45+Kjef2Z6pE0BkskzsH0GO7GrND0wGlTM1ioUe3v0dGYx9ZJH0Aro/YyA8fqQ5EyIKDRjZojJYMFTflw==
+  dependencies:
+    ci-info "^3.0.0"
+
 stream-browserify@^2.0.1:
   version "2.0.2"
   resolved "https://registry.nlark.com/stream-browserify/download/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
@@ -8552,6 +8704,18 @@ tapable@^2.1.1, tapable@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.0.tgz#5c373d281d9c672848213d0e037d1c4165ab426b"
   integrity sha512-FBk4IesMV1rBxX2tfiK8RAmogtWn53puLOQlvO8XuwlgxcYbP4mVPS9Ph4aeamSyyVjOl24aYWAuc8U5kCVwMw==
+
+tar@^6.0.2:
+  version "6.1.11"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
+  integrity sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==
+  dependencies:
+    chownr "^2.0.0"
+    fs-minipass "^2.0.0"
+    minipass "^3.0.0"
+    minizlib "^2.1.1"
+    mkdirp "^1.0.3"
+    yallist "^4.0.0"
 
 terser-webpack-plugin@^1.4.3, terser-webpack-plugin@^1.4.4:
   version "1.4.5"
@@ -9260,7 +9424,7 @@ webpack-merge@^4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1:
+webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
   version "1.4.3"
   resolved "https://registry.nlark.com/webpack-sources/download/webpack-sources-1.4.3.tgz?cache=0&sync_timestamp=1627898333297&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwebpack-sources%2Fdownload%2Fwebpack-sources-1.4.3.tgz#eedd8ec0b928fbf1cbfe994e22d2d890f330a933"
   integrity sha1-7t2OwLko+/HL/plOItLYkPMwqTM=
@@ -9331,6 +9495,20 @@ webpack@^5:
     terser-webpack-plugin "^5.1.3"
     watchpack "^2.2.0"
     webpack-sources "^3.2.0"
+
+webpackbar@^5.0.0-3:
+  version "5.0.0-3"
+  resolved "https://registry.yarnpkg.com/webpackbar/-/webpackbar-5.0.0-3.tgz#f4f96c8fb13001b2bb1348252db4c980ab93aaac"
+  integrity sha512-viW6KCYjMb0NPoDrw2jAmLXU2dEOhRrtku28KmOfeE1vxbfwCYuTbTaMhnkrCZLFAFyY9Q49Z/jzYO80Dw5b8g==
+  dependencies:
+    ansi-escapes "^4.3.1"
+    chalk "^4.1.0"
+    consola "^2.15.0"
+    figures "^3.2.0"
+    pretty-time "^1.1.0"
+    std-env "^2.2.1"
+    text-table "^0.2.0"
+    wrap-ansi "^7.0.0"
 
 websocket-driver@>=0.5.1, websocket-driver@^0.7.4:
   version "0.7.4"

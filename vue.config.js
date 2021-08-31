@@ -1,43 +1,51 @@
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const cdnDependencies = require("./dependencies-cdn");
 const { chain, set, each } = require("lodash");
+const WebpackBar = require("webpackbar");
+const webpack = require("webpack");
 const path = require("path");
-// 拼接路径
 const resolve = (dir) => path.join(__dirname, dir);
 
-// 增加环境变量
+/*=============================================
+=                   增加环境变量                =
+=============================================*/
 process.env.VUE_APP_VERSION = require("./package.json").version;
 process.env.VUE_APP_BUILD_TIME = require("dayjs")().format("YYYY-M-D HH:mm:ss");
 
-// 基础路径 注意发布之前要先修改这里
+/*=============================================
+=          基础路径 注意发布之前要先修改这里       =
+=============================================*/
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || "";
 
-// 设置不参与构建的库
+/*=============================================
+=                设置不参与构建的库              =
+=============================================*/
 const externals = {};
 cdnDependencies.forEach((pkg) => {
   externals[pkg.name] = pkg.library;
 });
 
-// 引入文件的 cdn 链接
+/*=============================================
+=               引入文件的 cdn 链接             =
+=============================================*/
 const cdn = {
   css: cdnDependencies.map((e) => e.css).filter((e) => e),
   js: cdnDependencies.map((e) => e.js).filter((e) => e),
 };
 
-// 多页配置，默认未开启，如需要请参考 https://cli.vuejs.org/zh/config/#pages
+/*=============================================
+=               多页配置，默认未开启             =
+=============================================*/
 const pages = undefined;
-// const pages = {
-//   index: './src/main.js',
-//   subpage: './src/subpage.js'
-// }
 
 module.exports = {
-  // 根据你的实际情况更改这里
   publicPath,
   lintOnSave: true,
   devServer: {
-    publicPath, // 和 publicPath 保持一致
-    disableHostCheck: process.env.NODE_ENV === "development", // 关闭 host check，方便使用 ngrok 之类的内网转发工具
+    // 和 publicPath 保持一致
+    publicPath,
+    // 关闭 host check，方便使用 ngrok 之类的内网转发工具
+    disableHostCheck: process.env.NODE_ENV === "development",
   },
   css: {
     loaderOptions: {
@@ -49,11 +57,13 @@ module.exports = {
   },
   pages,
   configureWebpack: () => {
-    const configNew = {};
+    const configNew = { plugins: [] };
     if (process.env.NODE_ENV === "production") {
       configNew.externals = externals;
       configNew.plugins = [
-        // gzip
+        /*=============================================
+        =                     gzip                    =
+        =============================================*/
         new CompressionWebpackPlugin({
           filename: "[path].gz[query]",
           test: new RegExp("\\.(" + ["js", "css"].join("|") + ")$"),
@@ -61,16 +71,22 @@ module.exports = {
           minRatio: 0.8,
           deleteOriginalAssets: false,
         }),
+        /*=============================================
+        =               启动更美观的打包进度条            =
+        =============================================*/
+        new WebpackBar({
+          name: process.env.VUE_APP_PROJECT_NAME,
+          profile: true,
+        }),
       ];
     }
     return configNew;
   },
-  // 默认设置: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js
   chainWebpack: (config) => {
-    /**
-     * 添加 CDN 参数到 htmlWebpackPlugin 配置中
-     * 已适配多页
-     */
+    /*=============================================
+    =     添加 CDN 参数到 htmlWebpackPlugin 配置中   =
+    =============================================*/
+    // TODO 如果部署的环境不支持访问cdn，需要再次做分包配置
     const htmlPluginNames = chain(pages)
       .keys()
       .map((page) => "html-" + page)
@@ -88,36 +104,33 @@ module.exports = {
         return options;
       });
     });
-
-    /**
-     * 删除懒加载模块的 prefetch preload，降低带宽压力
-     * https://cli.vuejs.org/zh/guide/html-and-static-assets.html#prefetch
-     * https://cli.vuejs.org/zh/guide/html-and-static-assets.html#preload
-     * 而且预渲染时生成的 prefetch 标签是 modern 版本的，低版本浏览器是不需要的
-     */
+    //
     config.plugins.delete("prefetch").delete("preload");
     // 解决 cli3 热更新失效 https://github.com/vuejs/vue-cli/issues/1559
     config.resolve.symlinks(true);
-    // ====================================================== //
-    // ======================== 开发环境 ======================== //
-    // ====================================================== //
+    // ────────────────────────────────────────── I ──────────
+    //   :::::: 开发环境配置 : :  :   :    :     :        :
+    // ────────────────────────────────────────────────────
+
     config
       // 开发环境 sourcemap 不包含列信息
       .when(process.env.NODE_ENV === "development", (config) =>
         config.devtool("cheap-source-map")
       );
-    // ====================================================== //
-    // ======================== 正式环境 ======================= //
-    // ====================================================== //
+    // ────────────────────────────────────────── I ──────────
+    //   :::::: 正式环境配置 : :  :   :    :     :        :
+    // ────────────────────────────────────────────────────
     config.when(process.env.NODE_ENV === "production", (config) => {
-      // 压缩html中的css
+      // ====================================================== //
+      // ===================== 压缩html中的css ==================== //
+      // ====================================================== //
       config.plugin("html").tap((args) => {
         args[0].minify.minifyCSS = true;
         return args;
       });
-      // 在 optimization没有进行再次分包处理,因为进行了cdn分包优化
-      // TODO 如果部署的环境不支持访问cdn，需要再次做分包配置
-      // webpack-minimizer terser注释console.log
+      // ====================================================== //
+      // ==================== 注释console.log =================== //
+      // ====================================================== //
       config.optimization.minimizer("terser").tap((args) => {
         const terserOptionsCompress = args[0].terserOptions.compress;
         args[0].terserOptions.compress = Object.assign(terserOptionsCompress, {
@@ -127,15 +140,66 @@ module.exports = {
         });
         return args;
       });
+      // ====================================================== //
+      // ================= chunks splitChunks ================= //
+      // ====================================================== //
+      config.optimization.splitChunks({
+        automaticNameDelimiter: "-",
+        chunks: "all",
+        cacheGroups: {
+          chunk: {
+            name: "ty-chunk",
+            test: /[\\/]node_modules[\\/]/,
+            minSize: 131072,
+            maxSize: 524288,
+            chunks: "async",
+            minChunks: 2,
+            priority: 10,
+          },
+          vue: {
+            name: "vue",
+            test: /[\\/]node_modules[\\/](vue(.*)|core-js)[\\/]/,
+            chunks: "initial",
+            priority: 20,
+          },
+          elementUI: {
+            name: "element-ui",
+            test: /[\\/]node_modules[\\/]element-ui(.*)[\\/]/,
+            priority: 30,
+          },
+          extra: {
+            name: "ty-extra",
+            test: resolve("src/extra"),
+            priority: 40,
+          },
+          echarts: {
+            name: "echarts",
+            test: /[\\/]node_modules[\\/](echarts|zrender|tslib)[\\/]/,
+            priority: 50,
+          },
+        },
+      });
     });
-    // 重新设置 alias
+    // ====================================================== //
+    // ======================= banner ======================= //
+    // ====================================================== //
+    config
+      .plugin("banner")
+      .use(webpack.BannerPlugin, [
+        `${process.env.VUE_APP_PROJECT_NAME}-${process.env.VUE_APP_BUILD_TIME}`,
+      ]);
+    // ====================================================== //
+    // ===================== 重新设置 alias ===================== //
+    // ====================================================== //
     config.resolve.alias
       .set("@", resolve("src"))
       .set("@api", resolve("src/api"))
       .set("@components", resolve("src/components"))
       .set("@plugin", resolve("src/plugin"))
       .set("@views", resolve("src/views"));
-    // 分析工具
+    // ====================================================== //
+    // ======================== 分析工具 ======================== //
+    // ====================================================== //
     if (process.env.npm_config_report) {
       config
         .plugin("webpack-bundle-analyzer")
@@ -144,4 +208,6 @@ module.exports = {
   },
   // 不输出 map 文件
   productionSourceMap: false,
+  // 将运行时文件单独切分
+  runtimeCompiler: true,
 };

@@ -8,11 +8,9 @@ export default ({ request, requestForMock, mock, faker, tools }) => ({
     // 模拟数据
     // 无论GET POST 只要路径是demo
     mock.onAny("demo/any").reply((config) => {
-      console.log(config);
       // 您可以这样在拦截请求时获取携带的数据
       // TODO 参数是JSON格式,需要转换
       const data = tools.parse(config.data);
-      console.log(data);
       // 模拟正确的返回 并使用 faker 生成假数据
       // return tools.responseSuccess({
       //   id: faker.random.uuid(),

@@ -25,6 +25,7 @@
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/compression-webpack-plugin": "^6.0.6",
     "@types/webpack-bundle-analyzer": "^4.4.1",
+    "@types/webpackbar": "^4.0.2",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
@@ -33,7 +34,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "axios-mock-adapter": "^1.20.0",
     "babel-eslint": "^10.1.0",
-    "compression-webpack-plugin": "^8.0.1",
+    "compression-webpack-plugin": "6.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
@@ -43,7 +44,8 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
-    "webpack-bundle-analyzer": "^4.4.2"
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpackbar": "^5.0.0-3"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
