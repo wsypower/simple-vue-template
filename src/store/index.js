@@ -8,6 +8,6 @@ Vue.use(Vuex);
 // 导出store模块
 export default new Vuex.Store({
   modules: {
-    "w-admin": wadmin,
+    ty: wadmin,
   },
 });

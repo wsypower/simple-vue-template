@@ -11,5 +11,9 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  mounted() {
+    // 展示系统信息
+    this.$store.commit("ty/releases/versionShow");
+  },
   render: (h) => h(App),
 }).$mount("#app");

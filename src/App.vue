@@ -10,7 +10,6 @@
 <script>
 export default {
   mounted() {
-    console.log(123);
     this.$api.DEMO_ANY().then((res) => {
       console.log(res);
     });
