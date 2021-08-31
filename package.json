@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "rm *.zip && npm version prerelease && vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": " vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "prerelease": "npm version prerelease && vue-cli-service build"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
