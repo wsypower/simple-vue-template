@@ -6457,6 +6457,14 @@ node-releases@^1.1.75:
   resolved "https://registry.nlark.com/node-releases/download/node-releases-1.1.75.tgz?cache=0&sync_timestamp=1629280398871&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-releases%2Fdownload%2Fnode-releases-1.1.75.tgz#6dd8c876b9897a1b8e5a02de26afa79bb54ebbfe"
   integrity sha1-bdjIdrmJehuOWgLeJq+nm7VOu/4=
 
+node-symbols@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/node-symbols/-/node-symbols-0.0.4.tgz#c047e3e6d3b2c4770342646b5dcd9421f5541eff"
+  integrity sha512-8Nxf0a7gErxWvFZbxMxUJF1c4SVm4d8cTOUJ60v5XwYrJ4bxxI6gmMmv64dwtUj4cAdal4+s67MhGPK9daxniA==
+  dependencies:
+    chalk "^2.3.0"
+    figures "^2.0.0"
+
 normalize-package-data@^2.5.0:
   version "2.5.0"
   resolved "https://registry.nlark.com/normalize-package-data/download/normalize-package-data-2.5.0.tgz?cache=0&sync_timestamp=1629301911873&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnormalize-package-data%2Fdownload%2Fnormalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
@@ -9436,6 +9444,13 @@ webpack-sources@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.0.tgz#b16973bcf844ebcdb3afde32eda1c04d0b90f89d"
   integrity sha512-fahN08Et7P9trej8xz/Z7eRu8ltyiygEo/hnRi9KqBUs80KeDcnf96ZJo++ewWd84fEf3xSX9bp4ZS9hbw0OBw==
+
+webpack-zip-plugin@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/webpack-zip-plugin/-/webpack-zip-plugin-0.1.6.tgz#e47648018192421c7f5704d1f7ea552ebf72326e"
+  integrity sha512-ierMciBA51zeHDHm8NsPLnbxyVbt4td+ozqyBTo3107dwHhaSMVOwkMas7ulOL/v48CtK4XX7mUKnXOI1dFkQQ==
+  dependencies:
+    node-symbols "0.0.4"
 
 webpack@^4.0.0:
   version "4.46.0"

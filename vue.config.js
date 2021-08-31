@@ -3,6 +3,7 @@ const cdnDependencies = require("./dependencies-cdn");
 const { chain, set, each } = require("lodash");
 const WebpackBar = require("webpackbar");
 const webpack = require("webpack");
+const WebpackZipPlugin = require("webpack-zip-plugin");
 const path = require("path");
 const resolve = (dir) => path.join(__dirname, dir);
 
@@ -77,6 +78,11 @@ module.exports = {
         new WebpackBar({
           name: process.env.VUE_APP_PROJECT_NAME,
           profile: true,
+        }),
+        new WebpackZipPlugin({
+          initialFile: "dist",
+          endPath: "./",
+          zipName: `distZip.${process.env.VUE_APP_VERSION}.zip`,
         }),
       ];
     }
